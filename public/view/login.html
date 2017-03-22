@@ -1,0 +1,30 @@
+<div class="login-page" >
+<div class="modal fade" id="lginModal" role="dialog" >
+<div class="modal-dialog">
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">    
+      <h4 class="modal-title">Login</h4>        
+    </div>
+    <div class="modal-body">
+      <div ng-show="!lgn.showPwd">
+        <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <input type="text" class="form-control" ng-model="lgn.usrName" placeholder="User name" ng-keyup="!(lgn.usrName=='') && ($event.keyCode == 13) ? lgn.validateUser():null"/>
+        </div>
+        <button type="button" ng-click="lgn.validateUser()" class="btn btn-info btn-block"  ng-disabled="lgn.usrName==''">{{lgn.userStatus}}<img ng-src="public/images/loading1.gif" ng-show="lgn.loadShow"/></button>
+        </div>
+        <div ng-show="lgn.showPwd">
+        <div class="input-group" >
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input type="password" class="form-control" ng-model="lgn.pswd" placeholder="Password" ng-keyup="!(lgn.pswd=='') && ($event.keyCode == 13) ? lgn.validatePassword():null"/>
+        </div>
+        <button type="button" ng-click="lgn.validatePassword()" class="btn btn-info btn-block"  ng-disabled="lgn.pswd==''">{{lgn.pswStatus}}<img ng-src="public/images/loading1.gif" ng-show="lgn.loadShow"/></button>
+        </div>
+          <div class="alert  alert-warning" ng-show="lgn.errShow"><strong><span class="glyphicon glyphicon-warning-sign"></span>  {{lgn.warnMsg}}</strong> Please try again.</div>
+       <div class="sign-up" ng-show="!lgn.showPwd">New user <a ng-click="lgn.closeModal()" ui-sref="signUp">Sign up</a></div>
+    </div>      
+  </div>
+</div>
+</div>
+<div>

@@ -1,0 +1,62 @@
+<!Doctype html>
+<html ng-app="ShopApp">
+    <head ng-controller="MetaCntrl as meta">
+        <script>
+            var startTime = Date.now();
+        </script>
+        <title>{{meta.title}}</title>
+        <link rel="icon" href="./public/images/Penguins.jpg" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=9">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet"  href="./public/styles/shop-styles.css" />        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-animate.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-cookies.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="./public/app.js"></script>
+        <script src="./public/scripts/controllers/searchController.js"></script>
+        <script src="./public/scripts/controllers/loginController.js"></script>
+        <script src="./public/scripts/controllers/signUpController.js"></script>
+        <script src="./public/scripts/services/paginationService.js"></script>
+        <script src="./public/scripts/directives/itemDirective.js"></script>
+    </head>
+    <body>
+        <div class="fix">
+            <div class="container" id="head">
+            <nav class="navbar well">
+              <div class="container-fluid">
+                <div class="navbar-header">                  
+                  <a class="navbar-brand" href="#"><div class="app-title">E-Mart</div><label>Shop your favourite</label></a>
+                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <label>Menu</label>
+                  </button>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a ui-sref="home">Home</a></li>
+                    <!--<li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Page 1-1</a></li>
+                        <li><a href="#">Page 1-2</a></li>
+                        <li><a href="#">Page 1-3</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Page 2</a></li>
+                    <li><a href="#">Page 3</a></li>-->
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a><span class="glyphicon glyphicon-user"></span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>        
+        </div>
+        </div>
+        <div class="container" id="content-id" ui-view>
+        </div>
+    </body>    
+</html>

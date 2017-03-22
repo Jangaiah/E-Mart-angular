@@ -1,0 +1,13 @@
+<div>
+<h3> Search items</h3><!-- <span class="badge">{{search.Items.length}}</span></legend></fieldset>-->    
+<input type="text" class="form-control" ng-model="search.idKey"  placeholder="Type your items for searching"/>
+
+<ul class="pager"><li id="prev" ng-click="search.prevPage()" class="previous"><a>Prev</a></li><li><ul  class="pagination" id="in_pages"><li ng-repeat="x in search.pages" ng-click="search.getPage(x)"><a ng-class="{active: x == search.active_class}">{{x+1}}</a></li></ul></li><li class="next" id="next" ng-click="search.nextPage()"><a>Next</a></li><li class="all" ng-click="search.fullPage()"><a ng-class="{active: search.fullData}">{{search.fullDataLabel}}</a></li></ul>
+<div id="items" class="row">       
+ <div class="col-md-3" ng-repeat="item in search.Items | filter:search.idKey">
+     <my-item val="item"></my-item>
+ </div>       
+</div>
+
+    <ul class="pager"><li id="prev" ng-click="search.prevPage()" class="previous" ><button class="btn" ng-class="{disableThis:search.isFullData}" ng-disabled="search.noPrev">Prev</button></li><li><ul  class="pagination" id="in_pages"><li ng-repeat="x in search.pages" ng-click="search.getThisPage(x)"><a ng-class="{active: (x == search.active_class),disableThis:search.isFullData}">{{x+1}}</a></li></ul></li><li class="next" id="next" ng-click="search.nextPage()" ><button class="btn" ng-class="{disableThis:search.isFullData}" ng-disabled="search.noNext">Next</button></li><li class="all" ng-click="search.fullPage()"><a ng-class="{active: search.isFullData}">{{search.fullDataLabel}}</a></li></ul>
+</div>

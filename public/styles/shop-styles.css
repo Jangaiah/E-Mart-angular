@@ -1,0 +1,84 @@
+/**** Main styles *****/
+body{ background-color: #f9ba61; font-family: Arial; }
+.container{ background-color: #fff; box-shadow: 0px 2px 11px 4px #4e4949; }
+
+.btn-info, .btn-info.disabled:hover,.btn-info[disabled]:hover{background-color: #f5a021;border-color: #f5a021;}
+.btn-info:focus,.btn-info:active:hover,.btn-info:hover{background-color: #e8910d;border-color: #e8910d;}
+
+/**** header ****/
+div#head { padding: 0; text-align: center; box-shadow: none;}
+div#head .app-title{ font-size: 36px; color: #af762d; text-shadow: 4px 4px 3px #d0890b; margin-bottom: 5px; padding-top: 40px; padding-bottom: 15px; }
+div#head label{ font-style: italic; color: #bf6506; text-align: center; display: block;}
+div#head .container-fluid{padding:0;}
+div#head .navbar{ background-color: #f5ba1e; border:0;border-radius:0; padding:0; margin-bottom: 0; }
+div#head .navbar-nav{ margin:0; }
+div#head .navbar-nav li{ border-bottom: 1px solid black;}
+div#head .navbar-header{margin:0;}
+div#head .navbar-brand{float:none; display: block;}
+div#head .navbar-toggle{width:100%; margin: 0; margin-top:105px; padding: 0;background-color: #bf6a06; color: #fff;}
+div#head .navbar-toggle label { color: #fff; font-size: 18px; }
+div#head .navbar-toggle .icon-bar{background-color: #af762d;}
+
+/**** Search items ***/
+#content-id{ padding-top: 5px; }
+fieldset { display: block; -webkit-margin-start: 0; -webkit-margin-end: 0; -webkit-padding-before: 0.35em; -webkit-padding-start: 0.75em; -webkit-padding-end: 0.75em; -webkit-padding-after: 0.625em; min-width: -webkit-min-content; border-width: 1px; border-style: solid; border-color: #bf6a06; border-image: initial; }
+legend{ width:auto;border-bottom: 0; padding-left:2px;padding-right:2px; margin-bottom:0; color: #bf6a06; }
+.badge{ background-color: #bf6a06; }
+input{ display: inline-flex; }
+
+/***** data ****/
+#items{ margin-top:10px; }
+#items img{width: 100%;transition: all 1s;}
+#items .item-content {padding: 0 20px;}
+#items .item{ margin-bottom: 20px; min-height: 390px;cursor: pointer;box-shadow: 0px 2px 4px 0px black;font-family: Arial;padding: 10px;}
+#items .item-content th { text-align: right; }
+#items a:hover{text-decoration: none;}
+#items img:hover {-webkit-filter: grayscale(100%);filter: grayscale(100%);}
+#items .col-md-3.ng-enter{transition: 0.5s ease-in all;-webkit-transition: 0.5s ease-in all;opacity: 0;}
+#items .col-md-3.ng-enter.ng-enter-active{opacity: 1;}
+#items .col-md-3.ng-leave{transition: 0.5s ease-out all;-webkit-transition: 0.5s ease-out all;opacity: 1;}
+#items .col-md-3.ng-leave.ng-leave-active{opacity: 0;}
+
+/****************           Pages inde          *******x**************/
+.pager>li, .pagination>li{cursor: pointer;float: left;}
+.pager>li>button,.pager>li>a, .pagination>li>a{padding: 0 6px;border-color: #bf6a06;background: #fff;color: black;border-radius: 15px;}
+.pager>li>a.active,.pagination>li>a.active{background-color: #f77506; border-color: #f77506;color:#fff;}
+.pager{margin: 10px 0;position: fixed; bottom: 0;}
+.pagination{margin:0;}
+ul.pager .previous {margin-right: 5px;}
+ul.pager .next {margin-left: 5px;}
+ul .all{margin-left: 15px;}
+ul.pager .disableThis{cursor: not-allowed; opacity: .65;}
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus{outline: none;}
+.item .btn-info{background-color: #f9ba61;color: #613803;font-weight: bold}
+.item .btn-info:focus{background-color: #f9ba61;color: #613803;}
+
+/*****************              Login  & Sign Up pages             ***************/
+.login-page .modal-body,.signUp-page .loading{text-align: center;}
+.login-page .modal-body img, .signUp-page img{margin-left:5px;width:18px;}
+.login-page fieldset,.btn-info,.input-group{ margin-bottom: 10px;}
+.login-page .sign-up>a{cursor: pointer;color:#23527c;}
+label{font-weight: normal;}
+
+/**********************         Sign up page               ***********************/
+.signUp-page{width:500px;margin:0 auto;padding:15px 0;}
+
+.signUp-page .alert-warning{margin-top: -18px;}
+
+@media screen and (max-width: 767px){
+    .table-responsive {border:0;}
+}
+
+/*****************************           screen width from 768         *********************/
+@media screen and (min-width:768px){
+    #content-id{ padding-top: 65px; }
+    .fix{position: fixed;width: 100%;top:0; z-index: 1000;}
+    div#head{ text-align: left; }
+    div#head .navbar-nav li{border-bottom: 0;}
+    div#head .app-title{ padding-top: 0; padding-bottom: 0; }
+}
+
+/*****************************           screen width from 992         *********************/
+@media screen and (min-width:992px){
+    .login-page { margin: 0 auto;width: 50%; }
+}
