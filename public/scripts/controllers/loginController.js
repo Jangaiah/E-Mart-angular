@@ -25,7 +25,7 @@ angular.module("ShopApp")
             var now=new $window.Date();
             var exp = new $window.Date(now.getFullYear(), now.getMonth(), now.getDate()+7);
             self.loadShow=false; $cookies.put('loggedUser',self.usrName,{expires:exp});
-            alert("Cookie set"+$cookies.get("loggedUser"));
+            //alert("Cookie set"+$cookies.get("loggedUser"));
             jQuery("#lginModal").modal('hide');$location.path('/home');
         },function errorCallback(response) {
             self.loadShow=false;self.errShow=true;self.warnMsg="Sorry, Password is incorrect.";self.pswStatus="Login";
