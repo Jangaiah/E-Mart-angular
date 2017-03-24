@@ -1,21 +1,44 @@
-angular.module("ShopApp",['ui.router','ngAnimate','ngCookies'])
-.config(function($stateProvider,$urlRouterProvider,$locationProvider){
-    $urlRouterProvider.otherwise("login");
-    $stateProvider
-    .state('home',{
-        url:'/home',
+angular.module("ShopApp",['ngRoute','ngAnimate','ngCookies'])
+.config(function($routeProvider,$locationProvider){   
+    $routeProvider    
+    .when('/home',{
         templateUrl:'public/view/home.html',
         controller: 'SearchCntrl as search'
-    })
-    .state('login',{
-        url:'/login',
+    }).when('/login',{
         templateUrl:'public/view/login.html',
         controller: 'LoginCntrl as lgn'
-    }).state('signUp',{
-        url:'/signUp',
+    }).when('/loggout',{
+        templateUrl:'public/view/loggout.html',
+        controller: 'LoggoutCntrl as lgout'
+    }).when('/signUp',{
         templateUrl:'public/view/signUp.html',
         controller: 'SignUpCntrl as sgn'
-    });
+    })
+    .otherwise({redirectTo: "/login"});
     $locationProvider.hashPrefix('');
 })
-.controller("MetaCntrl",function($scope){this.title = "Online Shop";});
+.run( function($cookies, $location,$rootScope) {
+    // register listener to watch route changes
+    $rootScope.$on( "$routeChangeStart", function(event, next, current) {
+      if ( $cookies.get('loggedUser') == null ) {
+        if ( next.templateUrl == "public/view/home.html" ) {
+          // already going to #login, no redirect needed
+            alert("Home page is not accessable util you login, redirecting to login.");
+            $location.path( "/login" );
+        } 
+          else if( next.templateUrl == "public/view/signUp.html"){$location.path( "/signUp" );}
+          else if( next.templateUrl == "public/view/loggout.html"){$location.path( "/loggout" );}
+          else {$location.path( "/login" );}
+      }else{
+          $rootScope.userName=$cookies.get('loggedUser')
+          //alert($rootScope.userName+" user has already logged in. Redirecting to home page");
+          $location.path( "/home" );}
+    });
+ })
+.controller("MetaCntrl",function($scope){this.title = "Online Shop";})
+.controller("MainController",function($scope,$rootScope,$cookies,$location){
+    var self=this;
+    this.userName =$rootScope.userName;
+    this.getUser=function(){console.log("seting user title");self.userName =$rootScope.userName;};
+    this.loggout=function(){$cookies.remove("loggedUser");$location.path( "/loggout");};
+});

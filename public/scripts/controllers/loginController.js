@@ -1,5 +1,5 @@
 angular.module("ShopApp")
-.controller("LoginCntrl",function($http,$location,$cookies){
+.controller("LoginCntrl",function($http,$location,$cookies,$window){
     this.usrName="";this.pswd="";this.loadShow=false;this.errShow=false;this.btnDisable=true;this.userStatus="Next";
     var self=this;self.showPwd=false;self.pswStatus="";self.warnMsg="";
         jQuery("#lginModal").modal({backdrop: "static"});    
@@ -12,7 +12,7 @@ angular.module("ShopApp")
         .then(function successCallback(response) {
             self.loadShow=false;self.showPwd=true;self.pswStatus="Login";
         },function errorCallback(response) {
-            self.loadShow=false;self.errShow=true;self.warnMsg="Sorry, User name is incorrect.";self.userStatus="Next";
+            self.loadShow=false;self.errShow=true;self.warnMsg="Sorry, User ID is incorrect.";self.userStatus="Next";
         });    
     };
     
@@ -22,7 +22,11 @@ angular.module("ShopApp")
         self.pswStatus="Logging in ...";
         $http({method:'POST',url:'/',data:{username:this.usrName,password:this.pswd,p:true}})
         .then(function successCallback(response) {
-            self.loadShow=false; jQuery("#lginModal").modal('hide');$location.path('/home');
+            var now=new $window.Date();
+            var exp = new $window.Date(now.getFullYear(), now.getMonth(), now.getDate()+7);
+            self.loadShow=false; $cookies.put('loggedUser',self.usrName,{expires:exp});
+            alert("Cookie set"+$cookies.get("loggedUser"));
+            jQuery("#lginModal").modal('hide');$location.path('/home');
         },function errorCallback(response) {
             self.loadShow=false;self.errShow=true;self.warnMsg="Sorry, Password is incorrect.";self.pswStatus="Login";
         });    
