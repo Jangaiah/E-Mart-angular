@@ -22,7 +22,7 @@
         <button type="button" ng-click="lgn.validatePassword()" class="btn btn-info btn-block"  ng-disabled="lgn.pswd==''">{{lgn.pswStatus}}<img ng-src="public/images/loading1.gif" ng-show="lgn.loadShow"/></button>
         </div>
           <div class="alert  alert-warning" ng-show="lgn.errShow"><strong><span class="glyphicon glyphicon-warning-sign"></span>  {{lgn.warnMsg}}</strong> Please try again.</div>
-       <div class="sign-up" ng-show="!lgn.showPwd">New user <a ng-click="lgn.closeModal()" href="#signUp" ui-sref="signUp">Sign up</a></div>
+       <div class="sign-up" ng-show="!lgn.showPwd">New user <a ng-click="lgn.closeModal()" href="#signUp" ui-sref="signUp"><h4>Sign up</h4></a></div>
     </div>      
   </div>
 </div>

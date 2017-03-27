@@ -35,10 +35,18 @@ angular.module("ShopApp",['ngRoute','ngAnimate','ngCookies'])
           $location.path( "/home" );}
     });
  })
-.controller("MetaCntrl",function($scope){this.title = "Online Shop";})
+.controller("MetaCntrl",function($scope){this.title = "E-Mart";})
 .controller("MainController",function($scope,$rootScope,$cookies,$location){
     var self=this;
+    self.loginLogout="Login";
     this.userName =$rootScope.userName;
-    this.getUser=function(){console.log("seting user title");self.userName =$rootScope.userName;};
-    this.loggout=function(){$cookies.remove("loggedUser");$location.path( "/loggout");};
+    this.getUser=function(){console.log("seting user title");self.userName =$rootScope.userName;if(self.userName){self.loginLogout="Loggout";}};
+    this.toggleLogInLoggout=function(){        
+        if(self.userName){
+            $cookies.remove("loggedUser");self.loginLogout="Login";self.userName=$rootScope.userName=null;$location.path( "/loggout");
+        }else{
+            $location.path( "/login");
+        }
+        
+    };
 });

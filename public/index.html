@@ -28,22 +28,23 @@
     </head>
     <body ng-controller="MainController as main">
         <div class="fix">
-            <div class="container" id="head">
+            <div class="container" id="head" >
             <nav class="navbar well">
               <div class="container-fluid">
                 <div class="navbar-header">                  
-                  <a class="navbar-brand" href="#"><div class="app-title">E-Mart</div><label>Shop your favourite</label></a>
+                  <a class="navbar-brand" href="#home"><div class="app-title">E-Mart</div><label>Shop your favourite</label></a>
                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <label>Menu</label>
                   </button>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                <li ng-mouseover="main.userName ? main.userName : main.getUser()" ng-attr-title="{{main.userName | fistLetterCapital}}"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><span class="caret"></span></a>
+                <li ng-attr-title="{{main.userName | fistLetterCapital}}"><a class="dropdown-toggle" data-toggle="dropdown" ng-mouseover="main.userName ? main.userName : main.getUser()"><span class="glyphicon glyphicon-user"></span><span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a >Profile</a></li>
-                        <li><a >Settings</a></li>
-                        <li><a ng-click="main.loggout()">Loggout</a></li>
+                        <li ng-show="main.userName"><a >Signed in as <em>{{main.userName | fistLetterCapital}}</em></a></li>
+                        <li ng-show="main.userName"><a >Profile</a></li>
+                        <li ng-show="main.userName"><a >Settings</a></li>
+                        <li><a ng-click="main.toggleLogInLoggout()">{{main.loginLogout}}</a></li>
                       </ul>
                     </li>
                 </ul>
