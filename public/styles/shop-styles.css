@@ -1,7 +1,7 @@
 /**** Main styles *****/
 body{ background-color: #f9ba61; font-family: Arial; }
 .container{ background-color: #fff; box-shadow: 0px 2px 11px 4px #4e4949; }
-
+.clear{clear:both;}
 .btn-info, .btn-info.disabled:hover,.btn-info[disabled]:hover{background-color: #f5a021;border-color: #f5a021;}
 .btn-info:focus,.btn-info:active:hover,.btn-info:hover{background-color: #e8910d;border-color: #e8910d;}
 
@@ -82,15 +82,17 @@ label{font-weight: normal;}
 @media screen and (min-width:992px){
     /* header */
     div#head .navbar-nav{ margin:0;float: right; }    
-    #myNavbar .navbar-right .dropdown-menu{text-align: center;}
-    #myNavbar .navbar-right .dropdown-menu li {border-bottom: 1px solid #d6c9b9;}
-    #myNavbar .navbar-right .dropdown-menu li:first-child {border-bottom: 1px solid #d28b0a;}
-    #myNavbar .navbar-right .dropdown-menu li:last-child{border: none;}
+    #myNavbar .navbar-right .dropdown-menu{text-align: center;}    
+    #myNavbar .navbar-right .dropdown-menu li:first-child {border-bottom: 1px solid #d8d5d2;}    
     #myNavbar .navbar-right .dropdown-menu{min-width: 80px;}
     
     /*login page*/
     .login-page { margin: 0 auto;width: 50%; }
     .login-page .modal-body h4{display: inline;}
+    .login_signup{padding-bottom: 10px;}
+    .login_signup .another-user{float:left;}
+    .login_signup .another-user a{cursor: pointer;}
+    .login_signup .sign-up{float:right;}
     /* signup page*/
     .signUp-page .modal-header{padding:5px;}
 }

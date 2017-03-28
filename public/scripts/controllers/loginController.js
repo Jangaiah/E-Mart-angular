@@ -1,7 +1,11 @@
 angular.module("ShopApp")
-.controller("LoginCntrl",function($http,$location,$cookies,$window){
+.controller("LoginCntrl",function($http,$location,$cookies,$window,$rootScope){
     this.usrName="";this.pswd="";this.loadShow=false;this.errShow=false;this.btnDisable=true;this.userStatus="Next";
     var self=this;self.showPwd=false;self.pswStatus="";self.warnMsg="";
+    
+    if ( $cookies.get('loggedUser')) {
+        self.usrName=$cookies.get('loggedUser');self.showPwd=true;self.pswStatus="Login";
+    }
         jQuery("#lginModal").modal({backdrop: "static"});    
     
     this.validateUser = function(){
@@ -24,7 +28,8 @@ angular.module("ShopApp")
         .then(function successCallback(response) {
             var now=new $window.Date();
             var exp = new $window.Date(now.getFullYear(), now.getMonth(), now.getDate()+7);
-            self.loadShow=false; $cookies.put('loggedUser',self.usrName,{expires:exp});
+            self.loadShow=false; 
+            $cookies.put('loggedUser',self.usrName,{expires:exp});
             //alert("Cookie set"+$cookies.get("loggedUser"));
             jQuery("#lginModal").modal('hide');$location.path('/home');
         },function errorCallback(response) {
@@ -32,9 +37,9 @@ angular.module("ShopApp")
         });    
     };
         
-    this.loggout=function(){
-        alert("")
-        $cookies.remove("LoginStatus");
+    this.anotherUserLogin=function(){
+        self.showPwd=false;self.usrName=self.pswd="";self.errShow=false;self.userStatus="Next";$rootScope.userName=null;
+        $cookies.remove("loggedUser");
     };
     this.closeModal = function(){
         jQuery("#lginModal").modal('hide');

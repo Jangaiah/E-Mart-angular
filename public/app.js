@@ -30,9 +30,10 @@ angular.module("ShopApp",['ngRoute','ngAnimate','ngCookies'])
           else if( next.templateUrl == "public/view/loggout.html"){$location.path( "/loggout" );}
           else {$location.path( "/login" );}
       }else{
-          $rootScope.userName=$cookies.get('loggedUser')
+          $rootScope.userName=$cookies.get('loggedUser');
           //alert($rootScope.userName+" user has already logged in. Redirecting to home page");
-          $location.path( "/home" );}
+          //$location.path( "/home" );
+      }
     });
  })
 .controller("MetaCntrl",function($scope){this.title = "E-Mart";})
@@ -42,7 +43,7 @@ angular.module("ShopApp",['ngRoute','ngAnimate','ngCookies'])
     this.userName =$rootScope.userName;
     this.getUser=function(){console.log("seting user title");self.userName =$rootScope.userName;if(self.userName){self.loginLogout="Loggout";}};
     this.toggleLogInLoggout=function(){        
-        if(self.userName){
+        if($rootScope.userName){
             $cookies.remove("loggedUser");self.loginLogout="Login";self.userName=$rootScope.userName=null;$location.path( "/loggout");
         }else{
             $location.path( "/login");

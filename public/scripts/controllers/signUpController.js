@@ -1,7 +1,9 @@
 angular.module("ShopApp")
-.controller("SignUpCntrl",function($http){    
+.controller("SignUpCntrl",function($http,$cookies,$rootScope){    
     var self=this;self.firstName='';self.lastName='';self.email='';self.mobile='';self.uid='';self.pswd='';self.cnfPswd='';
     self.status="Submit";self.successMsg=false;self.loadShow=false;self.warnMsg="";    
+    
+    if($cookies.get('loggedUser')){$cookies.remove("loggedUser");$rootScope.userName=null;}
     
     self.submitDetils = function(){
         self.status="Submitting...";
