@@ -49,7 +49,7 @@ function checkUsers(name){
                 response.write("Sucess");
                 response.end();                   
             }else{response.writeHead(401);response.end();}
-            }},1000);
+            }},500);
             });
         request.on('error', function(e) {
             console.log('problem with request: ' + e.message);

@@ -71,6 +71,8 @@ label{font-weight: normal;}
 
 /*****************************           screen width from 768         *********************/
 @media screen and (min-width:768px){
+    .navbar-brand{height: 62px;}
+    .navbar-nav{margin-top:8px;}
     #content-id{ padding-top: 65px; }
     .fix{position: fixed;width: 100%;top:0; z-index: 1000;}
     div#head{ text-align: left; }
@@ -81,7 +83,7 @@ label{font-weight: normal;}
 /*****************************           screen width from 992         *********************/
 @media screen and (min-width:992px){
     /* header */
-    div#head .navbar-nav{ margin:0;float: right; }    
+    div#head .navbar-nav{ margin:0;margin-top:8px;float: right; }    
     #myNavbar .navbar-right .dropdown-menu{text-align: center;}    
     #myNavbar .navbar-right .dropdown-menu li:first-child {border-bottom: 1px solid #d8d5d2;}    
     #myNavbar .navbar-right .dropdown-menu{min-width: 80px;}

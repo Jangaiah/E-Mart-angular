@@ -1,6 +1,6 @@
 angular.module("ShopApp")
 .controller("SearchCntrl",function(filterFilter,$http,PaginationService){
-    var self=this,no_records_page=10;
+    var self=this,no_records_page=8;
     PaginationService.clearData();
     
     self.Items=[];self.pages=[];self.fullDataLabel="";self.active_class=0,self.isFullData=PaginationService.isFullData;
